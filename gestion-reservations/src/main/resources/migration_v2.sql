@@ -1,0 +1,17 @@
+CREATE DATABASE IF NOT EXISTS gestion_reservations;
+
+USE gestion_reservation;
+
+CREATE TABLE IF NOT EXISTS Salle (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    code VARCHAR(50) NOT NULL,
+    libelle VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS Reservation (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    dateDebut DATETIME NOT NULL,
+    dateFin DATETIME NOT NULL,
+    salle_id INT,
+    FOREIGN KEY (salle_id) REFERENCES Salle(id) ON DELETE CASCADE
+);
